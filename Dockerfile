@@ -16,30 +16,12 @@ RUN go build -tags extended -o /go/hugo .
 FROM debian:bullseye-slim as only-hugo
 LABEL maintainer="Igor Sant'Ana"
 
-ARG user=hugo
-ARG group=hugo
-ARG uid=1100
-ARG gid=1100
-RUN groupadd -g ${gid} ${group}
-RUN useradd -u ${uid} -g ${group} -s /bin/sh -m ${user}
-USER $user
-WORKDIR /home/$user
-
 COPY --from=builder /go/hugo /usr/bin
 
 CMD ["hugo"]
 
 FROM node:16-bullseye-slim as hugo-node
 LABEL maintainer="Igor Sant'Ana"
-
-ARG user=hugo
-ARG group=hugo
-ARG uid=1100
-ARG gid=1100
-RUN groupadd -g ${gid} ${group}
-RUN useradd -u ${uid} -g ${group} -s /bin/sh -m ${user}
-USER $user
-WORKDIR /home/$user
 
 COPY --from=builder /go/hugo /usr/bin
 
