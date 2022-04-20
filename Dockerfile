@@ -10,6 +10,7 @@ RUN wget https://github.com/gohugoio/hugo/archive/refs/tags/v$HUGO_VERSION.zip
 RUN unzip v$HUGO_VERSION.zip
 WORKDIR /go/hugo-$HUGO_VERSION
 
+RUN go mod download
 RUN go build -tags extended -o /go/hugo .
 
 FROM debian:bullseye-slim as only-hugo
