@@ -1,11 +1,12 @@
 # Docker Hugo
 
-This image is a build of (Hugo)[https://gohugo.io].
+This image is a build of [Hugo](https://gohugo.io) with extended options.
 
-It is available on https://hub.docker.com/r/alvadorn/hugo
+It is available at https://hub.docker.com/r/alvadorn/hugo
 
 ## How to build
-To build this image, do: 
+
+To build this image, do the following: 
 
 ```sh
 HUGO_VERSION=<version> make build-only-hugo
